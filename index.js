@@ -1,21 +1,29 @@
+let player = {
+    Name: "D2ice",
+    Chips: 200
+}
 
-let hasblackjack = false
+hasblackjack = false
 let isalive = false
 let message = ""
 let messageEl = document.getElementById("message-el")
 let sumEl = document.getElementById("sum-el")
 let cardEl = document.getElementById("cards-el")
+let playerEl = document.getElementById("player-el")
+
+
+playerEl.textContent = player.Name + ": $" + player.Chips
 
 function getrandomcard() {
-   
-    let randomNumer =  Math.floor( Math.random() * 13 ) + 1
+
+    let randomNumer = Math.floor(Math.random() * 13) + 1
     if (randomNumer > 10) {
         return 10
     } else if (randomNumer === 1) {
         return 11
     } else {
-    return randomNumer
-    
+        return randomNumer
+
     }
 }
 
@@ -34,9 +42,9 @@ function rendergame() {
 
     cardEl.textContent = "Cards: "
     for (let i = 0; i < cards.length; i++) {
-         cardEl.textContent += cards[i] + " "
-        
-        }
+        cardEl.textContent += cards[i] + " "
+
+    }
 
     sumEl.textContent = "Sum: " + sum
     if (sum <= 20) {
@@ -53,14 +61,14 @@ function rendergame() {
 }
 
 function newcard() {
-if (isalive === true && hasblackjack === false) {
+    if (isalive === true && hasblackjack === false) {
 
-    let card = getrandomcard()
-    sum += card
-    cards.push(card)
-    rendergame()
-}
-    
+        let card = getrandomcard()
+        sum += card
+        cards.push(card)
+        rendergame()
+    }
+
 }
 
 
